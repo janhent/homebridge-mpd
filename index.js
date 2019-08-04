@@ -23,7 +23,7 @@ function MpdAccessory(log, config) {
     host: this.host,
   });
 
-  this.service = new Service.Switch(this.name);
+  this.service = new Service.Fan(this.name, "fan");
 
   this.service
     .getCharacteristic(Characteristic.On)
@@ -31,9 +31,9 @@ function MpdAccessory(log, config) {
     .on('set', this.setOn.bind(this));
   
   this.service
-    .addCharacteristic(new Characteristic.Brightness())
-    .on('get', this.getVolume.bind(this))
-    .on('set', this.setVolume.bind(this));
+    .addCharacteristic(Characteristic.RotationSpeed)
+    .on("set", this.setVolume.bind(this))
+    .on("get", this.getVolume.bind(this))
 }
 
 MpdAccessory.prototype.getServices = function() {
