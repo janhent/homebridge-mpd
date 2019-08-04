@@ -23,7 +23,7 @@ function MpdAccessory(log, config) {
     host: this.host,
   });
 
-  this.service = new Service.Fan(this.name, "fan");
+  this.service = new Service.Fan(this.name); //,"fan"
 
   this.service
     .getCharacteristic(Characteristic.On)
